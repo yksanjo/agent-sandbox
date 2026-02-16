@@ -1,0 +1,29 @@
+[package]
+name = "agent-sandbox"
+version = "0.1.0"
+edition = "2021"
+description = "WASI-based sandbox runtime for AI agents"
+
+[dependencies]
+clap = { version = "4.4", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.35", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+thiserror = "1.0"
+uuid = { version = "1.6", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+diff = "0.1"
+similar = "2.4"
+sha2 = "0.10"
+hex = "0.4"
+walkdir = "2.4"
+
+[features]
+default = []
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1

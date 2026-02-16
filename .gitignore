@@ -1,0 +1,12 @@
+# Build artifacts
+target/
+
+# Cargo lock
+Cargo.lock
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
