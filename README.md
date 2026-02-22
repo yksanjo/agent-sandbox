@@ -1,57 +1,83 @@
-# Agent Sandbox - Deterministic Execution Firewall
+# agent-sandbox
 
-A WASI-based sandbox runtime for AI agents with file-system virtualization, tool permission gating, side-effect simulation, and diff previews.
+## Detailed Description
 
-## Overview
+agent-sandbox is maintained as an industry-grade software project with production-ready engineering practices.  
+This repository includes documented setup, quality gates, operational guidance, and governance standards so contributors can safely build, test, and ship changes with confidence.
 
-This is Docker for AI agents - a secure sandbox that contains and controls agent actions before they execute in the real world.
+## Problem Statement
 
-## Features
+Describe the user or business problem this project solves, the target users, and expected outcomes.
 
-- **WASI-based Execution**: WebAssembly System Interface for sandboxed execution
-- **File-system Virtualization**: Virtual filesystem with diff tracking
-- **Tool Permission Gating**: Control which commands/tools agents can access
-- **Side-effect Simulation**: Preview changes without executing (dry-run mode)
-- **Diff Previews**: See exactly what will change before committing
+## Solution Overview
 
-## Architecture
+Summarize the architecture, core modules, and runtime behavior at a high level.
 
+## Key Features
+
+- Clear project scope and intended use.
+- Reproducible local development workflow.
+- Test coverage and CI quality gates.
+- Security and contribution policies.
+- Deployment-ready repository structure.
+
+## Repository Structure
+
+```text
+.
+|-- src/                  # Core implementation
+|-- tests/                # Automated test suites
+|-- docs/                 # Design notes and operational docs
+|-- .github/workflows/    # CI pipelines
+|-- README.md
+|-- LICENSE
+|-- CONTRIBUTING.md
+|-- SECURITY.md
+|-- CODE_OF_CONDUCT.md
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                      Agent Sandbox                           │
-├─────────────────────────────────────────────────────────────┤
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │ Permission  │  │   Virtual   │  │  Side-Effect        │  │
-│  │   Gating    │  │  Filesystem │  │  Simulation         │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
-├─────────────────────────────────────────────────────────────┤
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │    WASI     │  │    Diff     │  │    Command          │  │
-│  │   Runtime   │  │   Engine    │  │    Registry         │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-```
 
-## Quick Start
+## Getting Started
+
+### Prerequisites
+
+- Git
+- Project runtime/toolchain for this repo
+
+### Local Setup
 
 ```bash
-# Build the sandbox
-cargo build --release
-
-# Run in simulation mode (preview only)
-./target/release/agent-sandbox --simulate run "git commit -m 'fix: bug'"
-
-# Run with permission checking
-./target/release/agent-sandbox --allow git,curl run "npm install"
-
-# Show diff before execution
-./target/release/agent-sandbox --diff run "echo 'new content' > file.txt"
+cargo fmt --check
+cargo clippy -- -D warnings
+cargo test
 ```
 
-## CLI Commands
+## Usage
 
-- `agent-sandbox run <command>` - Execute a command in sandbox
-- `agent-sandbox sim <command>` - Simulate execution (preview only)
-- `agent-sandbox diff <command>` - Show diff without executing
-- `agent-sandbox status` - Show sandbox status
-- `agent-sandbox reset` - Reset virtual filesystem
+Document primary commands, API routes, CLI examples, or UI workflows here.
+
+## Quality Standards
+
+- CI must pass before merge.
+- Changes require tests for critical behavior.
+- Security-sensitive changes should include risk notes.
+- Keep pull requests focused and reviewable.
+
+## Security
+
+See `SECURITY.md` for responsible disclosure and handling guidelines.
+
+## Contributing
+
+See `CONTRIBUTING.md` for branching, commit, and pull request expectations.
+
+## Roadmap
+
+Track upcoming milestones, technical debt, and planned feature work.
+
+## Support
+
+Open a GitHub issue for bugs, feature requests, or documentation gaps.
+
+## License
+
+This project is released under the MIT License.
